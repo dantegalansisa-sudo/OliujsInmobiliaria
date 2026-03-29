@@ -1,0 +1,19 @@
+# IDE & System
+.claude/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Reference files (not part of site)
+avantgarde-properties.com_jumeirah-asora-bay_.png
+
+# Node (testing artifacts)
+node_modules/
+package.json
+package-lock.json
+
+# QA screenshots
+screenshot-*.png
+qa-*.png
+qa2-*.png
