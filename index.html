@@ -2550,23 +2550,198 @@
     }
 
     // ══════════════════════════════════════
-    // MULTI-LANGUAGE
+    // MULTI-LANGUAGE (full dictionary)
     // ══════════════════════════════════════
     let currentLang = 'es';
+    const T = {
+      // Navbar
+      '.navbar__links a[href="#inicio"]': { es:'Inicio', en:'Home' },
+      '.navbar__links a[href="#proyecto"]': { es:'Proyecto', en:'Project' },
+      '.navbar__links a[href="#galeria"]': { es:'Galería', en:'Gallery' },
+      '.navbar__links a[href="#amenidades"]': { es:'Amenidades', en:'Amenities' },
+      '.navbar__links a[href="#interiores"]': { es:'Interiores', en:'Interiors' },
+      '.navbar__links a[href="#masterplan"]': { es:'Master Plan', en:'Master Plan' },
+      '.navbar__links a[href="#contacto"]': { es:'Contacto', en:'Contact' },
+      '.navbar__cta': { es:'Registrar Interés', en:'Register Interest' },
+      // Mobile menu
+      '.mobile-menu a[href="#inicio"]': { es:'Inicio', en:'Home' },
+      '.mobile-menu a[href="#proyecto"]': { es:'Proyecto', en:'Project' },
+      '.mobile-menu a[href="#galeria"]': { es:'Galería', en:'Gallery' },
+      '.mobile-menu a[href="#amenidades"]': { es:'Amenidades', en:'Amenities' },
+      '.mobile-menu a[href="#interiores"]': { es:'Interiores', en:'Interiors' },
+      '.mobile-menu a[href="#masterplan"]': { es:'Master Plan', en:'Master Plan' },
+      '.mobile-menu a[href="#contacto"]': { es:'Contacto', en:'Contact' },
+      // Hero
+      '.hero__label span': { es:'OLIUJS Inmobiliaria presenta', en:'OLIUJS Inmobiliaria presents' },
+      '.hero__subtitle': { es:'Residencias exclusivas rodeadas de naturaleza en el corazón de La Romana. Un proyecto diseñado para quienes buscan vivir con elegancia y tranquilidad.', en:'Exclusive residences surrounded by nature in the heart of La Romana. A project designed for those who seek to live with elegance and tranquility.' },
+      // Hero buttons (handled with SVG preservation)
+      // Intro
+      '#proyecto .section-label span': { es:'Sobre el Proyecto', en:'About the Project' },
+      '#proyecto .heading-lg': { es:'Residencias de Lujo en La Romana', en:'Luxury Residences in La Romana' },
+      '.intro__image-badge': { es:'Proyecto Exclusivo', en:'Exclusive Project' },
+      '.intro__stat-label': { es:['Niveles por Edificio','Aptos. por Edificio','Tipologías'], en:['Levels per Building','Apts. per Building','Typologies'] },
+      // Residences
+      '#residencias .section-label span': { es:'Las Residencias', en:'The Residences' },
+      '#residencias .heading-lg': { es:'Dos Tipologías Pensadas Para Ti', en:'Two Typologies Designed For You' },
+      '#residencias .body-lg': { es:'Edificios de cuatro niveles con dos unidades por nivel. Cada apartamento incluye balcón, patio privado, área A/A y acceso exclusivo a azotea con terraza BBQ.', en:'Four-level buildings with two units per level. Each apartment includes balcony, private patio, A/C area and exclusive rooftop access with BBQ terrace.' },
+      // Gallery
+      '#galeria .section-label span': { es:'Galería', en:'Gallery' },
+      '#galeria .heading-lg': { es:'Arquitectura que Inspira', en:'Architecture that Inspires' },
+      // Gallery overlays
+      '.gallery__item-overlay span': { es:['Fachada Principal','Balcones','Terraza Rooftop','Terraza Privada','Áreas Comunes'], en:['Main Facade','Balconies','Rooftop Terrace','Private Terrace','Common Areas'] },
+      // Why La Romana
+      '#laromana .section-label span': { es:'La Ubicación', en:'The Location' },
+      '#laromana .heading-lg': { es:'¿Por Qué La Romana?', en:'Why La Romana?' },
+      // Amenities
+      '#amenidades .section-label span': { es:'Amenidades', en:'Amenities' },
+      '#amenidades .heading-lg': { es:'Un Estilo de Vida Completo', en:'A Complete Lifestyle' },
+      '#amenidades .body-lg': { es:'Cada espacio ha sido diseñado para elevar tu calidad de vida. Disfruta de amenidades de clase mundial sin salir de casa.', en:'Every space has been designed to elevate your quality of life. Enjoy world-class amenities without leaving home.' },
+      '.amenity-icon span': { es:['Piscina','Canchas','Parque Infantil','Senderos','Club House','Sala de Juegos','Ciclovía','Gimnasio','Área BBQ'], en:['Pool','Courts','Playground','Trails','Club House','Game Room','Bike Path','Gym','BBQ Area'] },
+      '.amenities__gallery-label': { es:['Piscina','Canchas Deportivas','Parque Infantil','Senderos','Club House','Sala de Juegos','Área Social','Áreas Verdes'], en:['Pool','Sports Courts','Playground','Trails','Club House','Game Room','Social Area','Green Areas'] },
+      // Interiors
+      '#interiores .section-label span': { es:'Interiores', en:'Interiors' },
+      '#interiores .heading-lg': { es:'Diseño Interior de Autor', en:'Signature Interior Design' },
+      '.interiors__card-title': { es:['Apartamento Tipo A — 80.35 m²','Apartamento Tipo B — 66.05 m²'], en:['Apartment Type A — 80.35 m²','Apartment Type B — 66.05 m²'] },
+      '.interiors__card-desc': { es:['3 Hab. · 2 Baños · Sala · Comedor · Cocina · Balcón · Patio 7.5 m²','2 Hab. · 2 Baños · Sala · Comedor · Cocina · Balcón · Patio 8.2 m²'], en:['3 Bed. · 2 Bath · Living · Dining · Kitchen · Balcony · Patio 7.5 m²','2 Bed. · 2 Bath · Living · Dining · Kitchen · Balcony · Patio 8.2 m²'] },
+      // Masterplan
+      '#masterplan .section-label span': { es:'Master Plan', en:'Master Plan' },
+      '#masterplan .heading-lg': { es:'Estratégicamente Ubicado', en:'Strategically Located' },
+      '#masterplan .body-lg': { es:'Villa Hermosa, Municipio de La Romana. Sobre la Av. Prof. Juan Bosch, con acceso directo a la Autovía del Este y cercanía a los principales servicios de la zona.', en:'Villa Hermosa, Municipality of La Romana. On Av. Prof. Juan Bosch, with direct access to the Eastern Highway and proximity to the area\'s main services.' },
+      '.masterplan__feature span': { es:['Av. Prof. Juan Bosch, Villa Hermosa, La Romana','Control de acceso y seguridad permanente','Centro Médico Regional del Este — cercano','Politécnico Benito González Jiménez — cercano','Acceso directo a Autovía del Este'], en:['Av. Prof. Juan Bosch, Villa Hermosa, La Romana','Access control and permanent security','Regional Medical Center of the East — nearby','Benito González Jiménez Polytechnic — nearby','Direct access to Eastern Highway'] },
+      // Comparador
+      '#comparador .section-label span': { es:'Compara', en:'Compare' },
+      '#comparador .heading-lg': { es:'Tipo A vs Tipo B', en:'Type A vs Type B' },
+      // Contact
+      '#contacto .section-label span': { es:'Contacto', en:'Contact' },
+      '#contacto .heading-lg': { es:'Registra Tu Interés', en:'Register Your Interest' },
+      '.contact__info .body-lg': { es:'Sé de los primeros en conocer todos los detalles de Brisas de Romana Green. Nuestro equipo te contactará con información exclusiva sobre disponibilidad y precios.', en:'Be among the first to learn all the details of Brisas de Romana Green. Our team will contact you with exclusive information on availability and pricing.' },
+      '.contact__detail-text .label': { es:['Teléfono','Email','Asesor Comercial'], en:['Phone','Email','Sales Advisor'] },
+      '.contact__form-title': { es:'Solicita Información', en:'Request Information' },
+      '.contact__form-subtitle': { es:'Completa el formulario y te contactaremos a la brevedad.', en:'Complete the form and we will contact you shortly.' },
+      // Form labels
+      'label[for="nombre"]': { es:'Nombre', en:'First Name' },
+      'label[for="apellido"]': { es:'Apellido', en:'Last Name' },
+      'label[for="email"]': { es:'Email', en:'Email' },
+      'label[for="telefono"]': { es:'Teléfono', en:'Phone' },
+      'label[for="interes"]': { es:'Interesado en', en:'Interested in' },
+      'label[for="mensaje"]': { es:'Mensaje', en:'Message' },
+      // Footer
+      '.footer__brand-desc': { es:'Desarrollamos proyectos inmobiliarios de calidad que transforman la forma de vivir. Brisas de Romana Green es nuestro compromiso con la excelencia.', en:'We develop quality real estate projects that transform the way people live. Brisas de Romana Green is our commitment to excellence.' },
+      '.footer__col-title': { es:['Proyecto','Comunidad','Contacto'], en:['Project','Community','Contact'] },
+      // Intro paragraphs
+      '.intro__text .body-lg': { es:['Brisas de Romana Green es un desarrollo residencial de primer nivel ubicado en Villa Hermosa, La Romana. Edificios de cuatro niveles con ocho apartamentos cada uno, distribuidos estratégicamente en dos unidades por nivel para garantizar privacidad y confort.','Todo dentro de un residencial cerrado con acceso controlado y seguridad permanente, rodeado de amplias áreas sociales diseñadas para el bienestar y la convivencia familiar.'], en:['Brisas de Romana Green is a premier residential development located in Villa Hermosa, La Romana. Four-level buildings with eight apartments each, strategically distributed in two units per level to ensure privacy and comfort.','All within a gated community with controlled access and permanent security, surrounded by spacious social areas designed for well-being and family living.'] },
+      // Hero buttons
+      '.hero__actions .btn--primary': { es:'Descubrir el Proyecto', en:'Discover the Project' },
+      '.hero__actions .btn--outline': { es:'Solicitar Información', en:'Request Information' },
+      // Residence tabs
+      '.residences__tab': { es:['Tipo A — 80.35 m²','Tipo B — 66.05 m²'], en:['Type A — 80.35 m²','Type B — 66.05 m²'] },
+      // Plan labels
+      '.residences__plan-card .label': { es:['Planta Nivel 1 — Tipo A','Planta Nivel 2 — Tipo A','Planta Nivel 1 — Tipo B','Planta Nivel 2 — Tipo B'], en:['Floor Plan Level 1 — Type A','Floor Plan Level 2 — Type A','Floor Plan Level 1 — Type B','Floor Plan Level 2 — Type B'] },
+      // Comparador headers
+      '.comparador__col-header h3': { es:['Tipo A','Tipo B'], en:['Type A','Type B'] },
+      // Comparador rows
+      '.comparador__row span': { es:['3 Habitaciones','2 Baños completos','Sala de estar + Comedor','Cocina + Área de lavado','Balcón con vista a la comunidad','Patio privado (7.5 m²)','Área A/A (aire acondicionado)','Azotea: 21 m² techada + 20.5 m² terraza','Azotea: Sala, Baño, Área BBQ','2 Habitaciones','2 Baños completos','Sala de estar + Comedor','Cocina + Área de lavado','Balcón con vista a la comunidad','Patio privado (8.2 m²)','Área A/A (aire acondicionado)','Azotea: 21.5 m² techada + 31.5 m² terraza','Azotea: Sala, Baño, Área BBQ'], en:['3 Bedrooms','2 Full Bathrooms','Living Room + Dining Room','Kitchen + Laundry Area','Balcony with community view','Private Patio (7.5 m²)','A/C Area (air conditioning)','Rooftop: 21 m² covered + 20.5 m² terrace','Rooftop: Living Room, Bathroom, BBQ Area','2 Bedrooms','2 Full Bathrooms','Living Room + Dining Room','Kitchen + Laundry Area','Balcony with community view','Private Patio (8.2 m²)','A/C Area (air conditioning)','Rooftop: 21.5 m² covered + 31.5 m² terrace','Rooftop: Living Room, Bathroom, BBQ Area'] },
+      // Trust values
+      '.trust__value h4': { es:['Calidad','Compromiso','Innovación','Arquitectura'], en:['Quality','Commitment','Innovation','Architecture'] },
+      // Footer links
+      '.footer__col a': { es:['Sobre el Proyecto','Las Residencias','Galería','Interiores','Amenidades','Master Plan','Ubicación','809-605-6363','brisasderomanagreen@gmail.com','Registrar Interés'], en:['About the Project','The Residences','Gallery','Interiors','Amenities','Master Plan','Location','809-605-6363','brisasderomanagreen@gmail.com','Register Interest'] },
+      // Footer copyright
+      '.footer__copy': { es:'\u00A9 2025 OLIUJS Inmobiliaria. Todos los derechos reservados. Brisas de Romana Green. Arquitectura por Estudio HJALDO.', en:'\u00A9 2025 OLIUJS Inmobiliaria. All rights reserved. Brisas de Romana Green. Architecture by Estudio HJALDO.' },
+      // Form submit
+      '.contact__form button[type="submit"]': { es:'Enviar Solicitud', en:'Submit Request' },
+      // Mobile bar
+      '.mobile-bar__btn--call': { es:'Llamar', en:'Call' },
+      // Hero scroll
+      '.hero__scroll-indicator span': { es:'Scroll', en:'Scroll' },
+    };
+
+    // HTML-based translations (uses innerHTML for elements with child HTML)
+    const TH = {
+      '.trust__value p': { es:['Materiales y acabados premium','Entrega puntual garantizada','Diseño arquitectónico de vanguardia','Diseño por <strong>Estudio HJALDO</strong>'], en:['Premium materials and finishes','Guaranteed on-time delivery','Avant-garde architectural design','Design by <strong>Estudio HJALDO</strong>'] },
+    };
+
+    // Placeholder translations
+    const placeholders = {
+      '#nombre': { es:'Tu nombre', en:'Your first name' },
+      '#apellido': { es:'Tu apellido', en:'Your last name' },
+      '#email': { es:'tu@email.com', en:'you@email.com' },
+      '#telefono': { es:'+1 (809) 000-0000', en:'+1 (809) 000-0000' },
+      '#mensaje': { es:'Cuéntanos qué buscas...', en:'Tell us what you\'re looking for...' },
+    };
+
+    // Select options
+    const selectOpts = {
+      '#interes': {
+        es: ['Selecciona una opción','Apartamento Tipo A','Apartamento Tipo B','Ambas tipologías','Inversión'],
+        en: ['Select an option','Apartment Type A','Apartment Type B','Both typologies','Investment']
+      }
+    };
+
     function setLang(lang) {
       currentLang = lang;
-      document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
-      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-        const val = el.getAttribute('data-' + lang);
-        if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = val;
-        else if (el.childElementCount === 0 || el.querySelector('svg')) {
+      document.querySelectorAll('.lang-toggle button').forEach(b =>
+        b.classList.toggle('active', b.textContent.trim() === lang.toUpperCase())
+      );
+
+      // Dictionary-based translations
+      Object.keys(T).forEach(selector => {
+        const els = document.querySelectorAll(selector);
+        const val = T[selector][lang];
+        els.forEach((el, i) => {
+          const text = Array.isArray(val) ? val[i] : val;
+          if (text === undefined) return;
           // Preserve SVG children
           const svg = el.querySelector('svg');
-          if (svg) { el.childNodes.forEach(n => { if (n.nodeType === 3) n.textContent = ''; }); el.insertBefore(document.createTextNode(val + ' '), svg); }
-          else el.textContent = val;
-        }
-        else el.textContent = val;
+          if (svg) {
+            const clone = svg.cloneNode(true);
+            el.textContent = text + ' ';
+            el.appendChild(clone);
+          } else {
+            el.textContent = text;
+          }
+        });
       });
+
+      // HTML-based translations (innerHTML)
+      Object.keys(TH).forEach(selector => {
+        const els = document.querySelectorAll(selector);
+        const val = TH[selector][lang];
+        els.forEach((el, i) => {
+          const text = Array.isArray(val) ? val[i] : val;
+          if (text !== undefined) el.innerHTML = text;
+        });
+      });
+
+      // data-es / data-en attributes (for elements using that system)
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        const val = el.getAttribute('data-' + lang);
+        if (!val) return;
+        const svg = el.querySelector('svg');
+        if (svg) {
+          const clone = svg.cloneNode(true);
+          el.textContent = val + ' ';
+          el.appendChild(clone);
+        } else if (el.childElementCount === 0) {
+          el.textContent = val;
+        }
+      });
+
+      // Placeholders
+      Object.keys(placeholders).forEach(sel => {
+        const el = document.querySelector(sel);
+        if (el) el.placeholder = placeholders[sel][lang];
+      });
+
+      // Select options
+      Object.keys(selectOpts).forEach(sel => {
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const opts = selectOpts[sel][lang];
+        Array.from(el.options).forEach((opt, i) => {
+          if (opts[i]) opt.textContent = opts[i];
+        });
+      });
+
       document.documentElement.lang = lang;
       updateCalc();
     }
