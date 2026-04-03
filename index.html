@@ -1456,6 +1456,30 @@
     .trust__value p{font-size:.78rem;color:var(--color-warm-gray);margin:0}
 
     /* ═══════════════════════════════════════════
+       ARCHITECT — ESTUDIO HJALDO
+    ═══════════════════════════════════════════ */
+    .architect{padding:var(--section-padding) 0;background:var(--color-cream)}
+    .architect__grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(40px,6vw,80px);align-items:center;margin-top:50px}
+    .architect__visual{position:relative;background:var(--color-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:480px;padding:clamp(40px,5vw,60px)}
+    .architect__logo-wrap{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:32px 40px;margin-bottom:32px;display:flex;align-items:center;justify-content:center}
+    .architect__logo-wrap img{max-width:260px;width:100%;height:auto;filter:brightness(1.1)}
+    .architect__visual-line{width:50px;height:1px;background:var(--color-gold);margin:0 auto 20px}
+    .architect__visual-name{font-family:var(--font-display);font-size:1.6rem;font-weight:500;color:var(--color-white);letter-spacing:.06em}
+    .architect__visual-sub{font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:var(--color-gold);margin-top:8px}
+    .architect__visual-since{font-size:.7rem;letter-spacing:.15em;color:rgba(255,255,255,.3);margin-top:20px}
+    .architect__content h3{font-family:var(--font-display);font-size:1.4rem;margin-bottom:16px;color:var(--color-dark);line-height:1.4}
+    .architect__content h3 strong{color:var(--color-gold);font-weight:600}
+    .architect__content p{font-size:.88rem;color:var(--color-warm-gray);line-height:1.85;margin-bottom:20px}
+    .architect__values{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
+    .architect__val{padding:20px;border:1px solid rgba(0,0,0,.06);transition:all .3s ease}
+    .architect__val:hover{border-color:var(--color-gold);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.04)}
+    .architect__val h4{font-family:var(--font-display);font-size:1.05rem;margin-bottom:4px}
+    .architect__val p{font-size:.78rem;color:var(--color-warm-gray);margin:0;line-height:1.6}
+    .architect__link{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--color-gold);text-decoration:none;margin-top:24px;transition:gap .3s ease}
+    .architect__link:hover{gap:14px}
+    .architect__link svg{width:14px;height:14px;stroke:var(--color-gold);fill:none;stroke-width:1.5}
+
+    /* ═══════════════════════════════════════════
        BROCHURE CTA
     ═══════════════════════════════════════════ */
     .brochure{padding:clamp(50px,6vw,80px) 0;background:linear-gradient(135deg,var(--color-gold-dark),var(--color-gold),var(--color-gold-light));position:relative;overflow:hidden}
@@ -1555,6 +1579,8 @@
       .contact__grid { grid-template-columns: 1fr; }
       .calculator__grid { grid-template-columns: 1fr; }
       .trust__grid { grid-template-columns: 1fr; }
+      .architect__grid { grid-template-columns: 1fr; }
+      .architect__visual { min-height: 360px; }
       .comparador__table { grid-template-columns: 1fr; }
       .comparador__col:first-child { border-right: none; border-bottom: 1px solid rgba(0,0,0,.06); }
       .why-romana__grid { grid-template-columns: 1fr 1fr; }
@@ -2098,6 +2124,42 @@
               <div class="trust__value"><h4>Innovación</h4><p>Diseño arquitectónico de vanguardia</p></div>
               <div class="trust__value"><h4>Arquitectura</h4><p>Diseño por <strong>Estudio HJALDO</strong></p></div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ ESTUDIO HJALDO ═══════════════════ -->
+    <section class="architect" id="arquitectura">
+      <div class="container">
+        <div class="reveal" style="text-align:center">
+          <div class="section-label" style="justify-content:center"><span data-es="Arquitectura del Proyecto" data-en="Project Architecture">Arquitectura del Proyecto</span></div>
+          <h2 class="heading-lg" data-es="Diseñado por Estudio HJALDO" data-en="Designed by Estudio HJALDO">Diseñado por Estudio HJALDO</h2>
+        </div>
+        <div class="architect__grid">
+          <div class="architect__visual reveal">
+            <div class="architect__logo-wrap">
+              <img src="IMAGENES/logo de la oficina de arquitectura.jpeg" alt="Logo Estudio HJALDO Arquitectura" loading="lazy">
+            </div>
+            <div class="architect__visual-line"></div>
+            <div class="architect__visual-name" data-es="Estudio HJALDO" data-en="Estudio HJALDO">Estudio HJALDO</div>
+            <div class="architect__visual-sub">Arquitectura</div>
+            <div class="architect__visual-since" data-es="Desde 2007 · Santo Domingo, RD" data-en="Since 2007 · Santo Domingo, DR">Desde 2007 · Santo Domingo, RD</div>
+          </div>
+          <div class="architect__content reveal reveal-delay-2">
+            <h3>Una firma del <strong>Arq. Hjalmar Decena</strong></h3>
+            <p data-es="Estudio Hjaldo SRL surge como una firma de mano del Arq. Hjalmar Decena, quien en sus inicios desarrolló actividades de diseño arquitectónico para diversos grupos constructivos y promotores de Santo Domingo, generando experiencia en la gerencia de proyectos y los trámites ante instituciones como los ayuntamientos y el Ministerio de Obras Públicas." data-en="Estudio Hjaldo SRL was founded by Architect Hjalmar Decena, who began his career developing architectural designs for various construction groups and developers in Santo Domingo, building expertise in project management and institutional processes with city councils and the Ministry of Public Works.">Estudio Hjaldo SRL surge como una firma de mano del Arq. Hjalmar Decena, quien en sus inicios desarrolló actividades de diseño arquitectónico para diversos grupos constructivos y promotores de Santo Domingo, generando experiencia en la gerencia de proyectos y los trámites ante instituciones como los ayuntamientos y el Ministerio de Obras Públicas.</p>
+            <p data-es="Fundada en 2007, la firma integra profesionales del ámbito constructivo, consultivo y del diseño arquitectónico, posicionándose como una de las firmas de arquitectura y construcción consolidadas en Santo Domingo. Especializada en proyectos de interés social, cada propuesta se basa en una experiencia acumulada con enfoque en aspectos culturales, espaciales, de iluminación, materiales, paisajismo y accesibilidad." data-en="Founded in 2007, the firm brings together professionals in construction, consulting, and architectural design, establishing itself as one of the leading architecture and construction firms in Santo Domingo. Specialized in social interest projects, each proposal builds on accumulated experience with a focus on cultural, spatial, lighting, material, landscape, and accessibility aspects.">Fundada en 2007, la firma integra profesionales del ámbito constructivo, consultivo y del diseño arquitectónico, posicionándose como una de las firmas de arquitectura y construcción consolidadas en Santo Domingo. Especializada en proyectos de interés social, cada propuesta se basa en una experiencia acumulada con enfoque en aspectos culturales, espaciales, de iluminación, materiales, paisajismo y accesibilidad.</p>
+            <div class="architect__values">
+              <div class="architect__val"><h4 data-es="Experiencia" data-en="Experience">Experiencia</h4><p data-es="Más de 17 años en diseño arquitectónico" data-en="Over 17 years in architectural design">Más de 17 años en diseño arquitectónico</p></div>
+              <div class="architect__val"><h4 data-es="Especialización" data-en="Specialization">Especialización</h4><p data-es="Proyectos residenciales de interés social" data-en="Social interest residential projects">Proyectos residenciales de interés social</p></div>
+              <div class="architect__val"><h4 data-es="Innovación" data-en="Innovation">Innovación</h4><p data-es="Espacialidad, iluminación y paisajismo" data-en="Spatiality, lighting, and landscaping">Espacialidad, iluminación y paisajismo</p></div>
+              <div class="architect__val"><h4 data-es="Alcance" data-en="Reach">Alcance</h4><p data-es="Santo Domingo y el interior del país" data-en="Santo Domingo and the country's interior">Santo Domingo y el interior del país</p></div>
+            </div>
+            <a href="https://estudiohjaldo.com" target="_blank" rel="noopener" class="architect__link" data-es="Visitar Estudio HJALDO" data-en="Visit Estudio HJALDO">
+              Visitar Estudio HJALDO
+              <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
+            </a>
           </div>
         </div>
       </div>
@@ -2659,6 +2721,7 @@
     // HTML-based translations (uses innerHTML for elements with child HTML)
     const TH = {
       '.trust__value p': { es:['Materiales y acabados premium','Entrega puntual garantizada','Diseño arquitectónico de vanguardia','Diseño por <strong>Estudio HJALDO</strong>'], en:['Premium materials and finishes','Guaranteed on-time delivery','Avant-garde architectural design','Design by <strong>Estudio HJALDO</strong>'] },
+      '.architect__content h3': { es:'Una firma del <strong>Arq. Hjalmar Decena</strong>', en:'A firm by <strong>Arch. Hjalmar Decena</strong>' },
     };
 
     // Placeholder translations
