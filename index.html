@@ -603,30 +603,35 @@
 
     .hero__fiduciaria {
       position: absolute;
-      bottom: clamp(20px,3vh,40px);
-      right: clamp(30px,5vw,80px);
+      bottom: clamp(70px,10vh,110px);
+      left: clamp(30px,5vw,80px);
       z-index: 3;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
+      background: rgba(0,0,0,.45);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 10px 18px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 6px;
       opacity: 0;
       animation: fadeUp 1s 1.4s var(--ease-out-expo) forwards;
     }
     .hero__fiduciaria span {
-      font-size: .6rem;
+      font-size: .58rem;
       letter-spacing: .15em;
       text-transform: uppercase;
-      color: rgba(255,255,255,.4);
+      color: rgba(255,255,255,.5);
     }
     .hero__fiduciaria img {
-      height: 36px;
+      height: 30px;
       width: auto;
-      filter: brightness(0) invert(1);
-      opacity: .55;
+      opacity: .85;
       transition: opacity .3s ease;
     }
     .hero__fiduciaria:hover img {
-      opacity: .85;
+      opacity: 1;
     }
 
     .hero__scroll-indicator {
@@ -1371,6 +1376,28 @@
       color: rgba(255,255,255,0.3);
     }
 
+    .footer__nexix {
+      text-align: center;
+      padding: 16px 0;
+      border-top: 1px solid rgba(255,255,255,.05);
+      margin-top: 8px;
+    }
+    .footer__nexix span {
+      font-size: .65rem;
+      letter-spacing: .15em;
+      color: rgba(255,255,255,.25);
+      text-transform: uppercase;
+    }
+    .footer__nexix a {
+      color: rgba(255,255,255,.45);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color .3s ease;
+    }
+    .footer__nexix a:hover {
+      color: var(--color-gold);
+    }
+
     .footer__social {
       display: flex;
       gap: 14px;
@@ -1412,7 +1439,8 @@
       border-radius: 12px;
     }
     .footer__social a[aria-label="WhatsApp"] svg {
-      stroke: #fff;
+      fill: #fff;
+      stroke: none;
     }
     .footer__social a[aria-label="WhatsApp"]:hover {
       transform: translateY(-3px);
@@ -1674,7 +1702,9 @@
 
     .navbar__social{display:flex;align-items:center;gap:12px;margin-left:14px;padding-left:14px;border-left:1px solid rgba(255,255,255,.1)}
     .navbar__social a{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;transition:all .3s ease}
-    .navbar__social svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:1.5}
+    .navbar__social svg{width:20px;height:20px;color:#fff}
+    .navbar__social a[aria-label="Instagram"] svg{fill:none;stroke:#fff;stroke-width:1.5}
+    .navbar__social a[aria-label="WhatsApp"] svg{fill:#fff;stroke:none}
     .navbar__social a[aria-label="Instagram"]{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
     .navbar__social a[aria-label="Instagram"]:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(225,48,108,.35)}
     .navbar__social a[aria-label="WhatsApp"]{background:#25D366}
@@ -1749,7 +1779,7 @@
       .hero__dots { bottom: 20px; right: 20px; }
       .hero__price-badge { position: relative; right: auto; bottom: auto; margin-top: 24px; }
       .hero__price-badge-inner { padding: 20px 24px; }
-      .hero__fiduciaria { bottom: 76px; right: 20px; }
+      .hero__fiduciaria { bottom: 76px; left: 20px; }
 
       .intro__stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
       .intro__stat-number { font-size: 1.8rem; }
@@ -1831,7 +1861,7 @@
           <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </a>
         <a href="https://wa.me/18096056363" target="_blank" rel="noopener" aria-label="WhatsApp">
-          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
       </div>
       <button class="navbar__hamburger" id="hamburger" aria-label="Menú">
@@ -2542,7 +2572,7 @@
             <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
           </a>
           <a href="https://wa.me/18096056363" aria-label="WhatsApp" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           </a>
         </div>
         <div class="footer__fiduciaria">
@@ -2550,6 +2580,9 @@
           <img src="IMAGENES/fidusuaria.png" alt="Fiduciaria La Nacional">
         </div>
       </div>
+    </div>
+    <div class="footer__nexix">
+      <span data-es="Website por" data-en="Website by">Website por</span> <a href="https://www.instagram.com/nexixstudio" target="_blank" rel="noopener">NEXIX Studio</a>
     </div>
   </footer>
 
