@@ -504,7 +504,18 @@
 
     .hero__title em {
       font-style: italic;
-      color: var(--color-gold-light);
+      color: #6abf69;
+    }
+
+    .hero__title small {
+      display: block;
+      font-family: var(--font-body);
+      font-size: .32em;
+      font-weight: 400;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+      margin-bottom: 8px;
     }
 
     .hero__subtitle {
@@ -524,6 +535,89 @@
       flex-wrap: wrap;
       opacity: 0;
       animation: fadeUp 1s 0.9s var(--ease-out-expo) forwards;
+    }
+
+    .hero__price-badge {
+      position: absolute;
+      right: clamp(30px,5vw,80px);
+      bottom: clamp(100px,14vh,180px);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      opacity: 0;
+      animation: fadeUp 1s 1.2s var(--ease-out-expo) forwards;
+    }
+    .hero__price-badge-inner {
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 28px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero__price-from {
+      font-size: .6rem;
+      font-weight: 400;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+    }
+    .hero__price-amount {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--color-white);
+      letter-spacing: .02em;
+      line-height: 1.1;
+    }
+    .hero__price-amount span {
+      font-size: .9rem;
+      color: rgba(255,255,255,.6);
+    }
+    .hero__price-divider {
+      width: 30px;
+      height: 1px;
+      background: var(--color-gold);
+      margin: 6px 0;
+    }
+    .hero__price-reserve {
+      font-size: .62rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+    }
+    .hero__price-reserve strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--color-white);
+      margin-top: 2px;
+      letter-spacing: .02em;
+    }
+
+    .hero__fiduciaria {
+      position: absolute;
+      bottom: clamp(20px,3vh,40px);
+      right: clamp(30px,5vw,80px);
+      z-index: 3;
+      opacity: 0;
+      animation: fadeUp 1s 1.4s var(--ease-out-expo) forwards;
+    }
+    .hero__fiduciaria img {
+      height: 28px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: .45;
+      transition: opacity .3s ease;
+    }
+    .hero__fiduciaria img:hover {
+      opacity: .7;
     }
 
     .hero__scroll-indicator {
@@ -911,6 +1005,7 @@
       position: relative;
       overflow: hidden;
       height: 260px;
+      cursor: pointer;
     }
 
     .amenities__gallery-item img {
@@ -1526,6 +1621,11 @@
     .lang-toggle button.active{color:var(--color-gold)}
     .lang-toggle span{color:rgba(255,255,255,.2);font-size:.6rem}
 
+    .navbar__social{display:flex;align-items:center;gap:10px;margin-left:14px;padding-left:14px;border-left:1px solid rgba(255,255,255,.1)}
+    .navbar__social a{display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);transition:color .3s ease}
+    .navbar__social a:hover{color:var(--color-gold)}
+    .navbar__social svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5}
+
     /* ═══════════════════════════════════════════
        MOBILE STICKY BAR
     ═══════════════════════════════════════════ */
@@ -1558,6 +1658,7 @@
       .navbar__links { display: none; }
       .navbar__cta { display: none; }
       .lang-toggle { display: none; }
+      .navbar__social { display: none; }
       .navbar__hamburger { display: flex; }
       .mobile-bar { display: block; }
       body { padding-bottom: 64px; }
@@ -1592,6 +1693,9 @@
     @media (max-width: 768px) {
       .hero__title { font-size: clamp(2.4rem, 8vw, 3.5rem); }
       .hero__dots { bottom: 20px; right: 20px; }
+      .hero__price-badge { position: relative; right: auto; bottom: auto; margin-top: 24px; }
+      .hero__price-badge-inner { padding: 20px 24px; }
+      .hero__fiduciaria { bottom: 76px; right: 20px; }
 
       .intro__stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
       .intro__stat-number { font-size: 1.8rem; }
@@ -1668,6 +1772,14 @@
         <span>/</span>
         <button onclick="setLang('en')">EN</button>
       </div>
+      <div class="navbar__social">
+        <a href="https://www.instagram.com/oliujsinmobiliaria" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://wa.me/18096056363" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        </a>
+      </div>
       <button class="navbar__hamburger" id="hamburger" aria-label="Menú">
         <span></span><span></span><span></span>
       </button>
@@ -1704,7 +1816,7 @@
       <div class="hero__label">
         <span>OLIUJS Inmobiliaria presenta</span>
       </div>
-      <h1 class="hero__title">Brisas de<br>Romana <em>Green</em></h1>
+      <h1 class="hero__title"><small>Residencial</small>Brisas de<br>Romana <em>Green</em></h1>
       <p class="hero__subtitle">Residencias exclusivas rodeadas de naturaleza en el corazón de La Romana. Un proyecto diseñado para quienes buscan vivir con elegancia y tranquilidad.</p>
       <div class="hero__actions">
         <a href="#proyecto" class="btn btn--primary">
@@ -1713,6 +1825,19 @@
         </a>
         <a href="#contacto" class="btn btn--outline">Solicitar Información</a>
       </div>
+    </div>
+    <div class="hero__price-badge">
+      <div class="hero__price-badge-inner">
+        <span class="hero__price-from" data-es="Apartamentos desde" data-en="Apartments from">Apartamentos desde</span>
+        <div class="hero__price-amount"><span>US$</span> 72,665</div>
+        <div class="hero__price-divider"></div>
+        <span class="hero__price-reserve" data-es="Aparta el tuyo con" data-en="Reserve yours with">Aparta el tuyo con
+          <strong>US$ 500</strong>
+        </span>
+      </div>
+    </div>
+    <div class="hero__fiduciaria">
+      <img src="IMAGENES/fidusuaria.png" alt="Fiduciaria La Nacional" loading="lazy">
     </div>
     <div class="hero__scroll-indicator">
       <span>Scroll</span>
@@ -1927,35 +2052,35 @@
         </div>
 
         <div class="amenities__gallery reveal">
-          <div class="amenities__gallery-item">
+          <div class="amenities__gallery-item" onclick="openLightbox('IMAGENES/RGS-06.png')">
             <img src="IMAGENES/RGS-06.png" alt="Piscina con club house y palmeras" loading="lazy">
             <span class="amenities__gallery-label">Piscina</span>
           </div>
-          <div class="amenities__gallery-item">
+          <div class="amenities__gallery-item" onclick="openLightbox('IMAGENES/RGS-02.png')">
             <img src="IMAGENES/RGS-02.png" alt="Canchas de basketball y volleyball" loading="lazy">
             <span class="amenities__gallery-label">Canchas Deportivas</span>
           </div>
-          <div class="amenities__gallery-item">
+          <div class="amenities__gallery-item" onclick="openLightbox('IMAGENES/RGS-04.png')">
             <img src="IMAGENES/RGS-04.png" alt="Parque infantil con juegos" loading="lazy">
             <span class="amenities__gallery-label">Parque Infantil</span>
           </div>
-          <div class="amenities__gallery-item">
+          <div class="amenities__gallery-item" onclick="openLightbox('IMAGENES/RGS-01.png')">
             <img src="IMAGENES/RGS-01.png" alt="Senderos peatonales con árboles" loading="lazy">
             <span class="amenities__gallery-label">Senderos</span>
           </div>
-          <div class="amenities__gallery-item">
+          <div class="amenities__gallery-item" onclick="openLightbox('IMAGENES/RGS-05.png')">
             <img src="IMAGENES/RGS-05.png" alt="Vista aérea del área de piscina" loading="lazy">
             <span class="amenities__gallery-label">Club House</span>
           </div>
-          <div class="amenities__gallery-item">
+          <div class="amenities__gallery-item" onclick="openLightbox('IMAGENES/RGS-08.png')">
             <img src="IMAGENES/RGS-08.png" alt="Sala de juegos con billar y cine" loading="lazy">
             <span class="amenities__gallery-label">Sala de Juegos</span>
           </div>
-          <div class="amenities__gallery-item">
+          <div class="amenities__gallery-item" onclick="openLightbox('IMAGENES/RGS-03.png')">
             <img src="IMAGENES/RGS-03.png" alt="Área social con gazebos" loading="lazy">
             <span class="amenities__gallery-label">Área Social</span>
           </div>
-          <div class="amenities__gallery-item">
+          <div class="amenities__gallery-item" onclick="openLightbox('IMAGENES/RGS-07.png')">
             <img src="IMAGENES/RGS-07.png" alt="Área recreativa del proyecto" loading="lazy">
             <span class="amenities__gallery-label">Áreas Verdes</span>
           </div>
@@ -2358,11 +2483,8 @@
       <div class="footer__bottom">
         <p class="footer__copy">&copy; 2025 OLIUJS Inmobiliaria. Todos los derechos reservados. Brisas de Romana Green. Arquitectura por Estudio HJALDO.</p>
         <div class="footer__social">
-          <a href="#" aria-label="Instagram">
+          <a href="https://www.instagram.com/oliujsinmobiliaria" aria-label="Instagram" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <a href="#" aria-label="Facebook">
-            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
           <a href="https://wa.me/18096056363" aria-label="WhatsApp" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
