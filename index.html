@@ -537,6 +537,11 @@
       animation: fadeUp 1s 0.9s var(--ease-out-expo) forwards;
     }
 
+    @keyframes heroFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
     .hero__price-badge {
       position: absolute;
       right: clamp(30px,5vw,80px);
@@ -547,7 +552,7 @@
       align-items: center;
       text-align: center;
       opacity: 0;
-      animation: fadeUp 1s 1.2s var(--ease-out-expo) forwards;
+      animation: fadeUp 1s 1.2s var(--ease-out-expo) forwards, heroFloat 4s 2.5s ease-in-out infinite;
     }
     .hero__price-badge-inner {
       background: rgba(0,0,0,.55);
@@ -603,8 +608,8 @@
 
     .hero__fiduciaria {
       position: absolute;
-      bottom: clamp(70px,10vh,110px);
-      left: clamp(30px,5vw,80px);
+      bottom: clamp(40px,6vh,80px);
+      right: clamp(30px,5vw,80px);
       z-index: 3;
       display: flex;
       align-items: center;
@@ -616,7 +621,7 @@
       border: 1px solid rgba(255,255,255,.1);
       border-radius: 6px;
       opacity: 0;
-      animation: fadeUp 1s 1.4s var(--ease-out-expo) forwards;
+      animation: fadeUp 1s 1.4s var(--ease-out-expo) forwards, heroFloat 4s 3s ease-in-out infinite;
     }
     .hero__fiduciaria span {
       font-size: .58rem;
@@ -1779,7 +1784,7 @@
       .hero__dots { bottom: 20px; right: 20px; }
       .hero__price-badge { position: relative; right: auto; bottom: auto; margin-top: 24px; }
       .hero__price-badge-inner { padding: 20px 24px; }
-      .hero__fiduciaria { bottom: 76px; left: 20px; }
+      .hero__fiduciaria { bottom: 76px; right: 20px; }
 
       .intro__stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
       .intro__stat-number { font-size: 1.8rem; }
