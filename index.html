@@ -606,18 +606,27 @@
       bottom: clamp(20px,3vh,40px);
       right: clamp(30px,5vw,80px);
       z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       opacity: 0;
       animation: fadeUp 1s 1.4s var(--ease-out-expo) forwards;
     }
+    .hero__fiduciaria span {
+      font-size: .6rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+    }
     .hero__fiduciaria img {
-      height: 28px;
+      height: 36px;
       width: auto;
       filter: brightness(0) invert(1);
-      opacity: .45;
+      opacity: .55;
       transition: opacity .3s ease;
     }
-    .hero__fiduciaria img:hover {
-      opacity: .7;
+    .hero__fiduciaria:hover img {
+      opacity: .85;
     }
 
     .hero__scroll-indicator {
@@ -1663,10 +1672,13 @@
     .lang-toggle button.active{color:var(--color-gold)}
     .lang-toggle span{color:rgba(255,255,255,.2);font-size:.6rem}
 
-    .navbar__social{display:flex;align-items:center;gap:10px;margin-left:14px;padding-left:14px;border-left:1px solid rgba(255,255,255,.1)}
-    .navbar__social a{display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);transition:color .3s ease}
-    .navbar__social a:hover{color:var(--color-gold)}
-    .navbar__social svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5}
+    .navbar__social{display:flex;align-items:center;gap:12px;margin-left:14px;padding-left:14px;border-left:1px solid rgba(255,255,255,.1)}
+    .navbar__social a{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;transition:all .3s ease}
+    .navbar__social svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:1.5}
+    .navbar__social a[aria-label="Instagram"]{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}
+    .navbar__social a[aria-label="Instagram"]:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(225,48,108,.35)}
+    .navbar__social a[aria-label="WhatsApp"]{background:#25D366}
+    .navbar__social a[aria-label="WhatsApp"]:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(37,211,102,.35)}
 
     /* ═══════════════════════════════════════════
        MOBILE STICKY BAR
@@ -1879,6 +1891,7 @@
       </div>
     </div>
     <div class="hero__fiduciaria">
+      <span data-es="Fideicomiso por" data-en="Trust by">Fideicomiso por</span>
       <img src="IMAGENES/fidusuaria.png" alt="Fiduciaria La Nacional" loading="lazy">
     </div>
     <div class="hero__scroll-indicator">
