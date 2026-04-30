@@ -414,6 +414,35 @@
 
     .mobile-menu a:hover { opacity: 1; color: var(--color-gold); }
 
+    .mobile-menu__lang {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+    .mobile-menu__lang button {
+      background: none;
+      border: 1px solid rgba(255,255,255,.15);
+      font-family: var(--font-body);
+      font-size: .8rem;
+      letter-spacing: .2em;
+      color: rgba(255,255,255,.5);
+      cursor: pointer;
+      padding: 10px 22px;
+      transition: all .3s ease;
+    }
+    .mobile-menu__lang button.active {
+      color: var(--color-dark);
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+    }
+    .mobile-menu__lang button:hover:not(.active) {
+      color: var(--color-gold);
+      border-color: var(--color-gold);
+    }
+
     /* ═══════════════════════════════════════════
        HERO
     ═══════════════════════════════════════════ */
@@ -1918,6 +1947,10 @@
     <a href="#interiores" onclick="closeMobile()">Interiores</a>
     <a href="#masterplan" onclick="closeMobile()">Master Plan</a>
     <a href="#contacto" onclick="closeMobile()">Contacto</a>
+    <div class="mobile-menu__lang">
+      <button class="active" onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
   </div>
 
   <!-- ═══════════════════ HERO ═══════════════════ -->
@@ -2923,7 +2956,7 @@
 
     function setLang(lang) {
       currentLang = lang;
-      document.querySelectorAll('.lang-toggle button').forEach(b =>
+      document.querySelectorAll('.lang-toggle button, .mobile-menu__lang button').forEach(b =>
         b.classList.toggle('active', b.textContent.trim() === lang.toUpperCase())
       );
 
