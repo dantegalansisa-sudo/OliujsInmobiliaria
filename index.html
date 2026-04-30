@@ -1677,27 +1677,6 @@
     .map-section iframe:hover{filter:grayscale(0)}
 
     /* ═══════════════════════════════════════════
-       CALCULATOR
-    ═══════════════════════════════════════════ */
-    .calculator{padding:var(--section-padding) 0;background:var(--color-cream)}
-    .calculator__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;margin-top:50px}
-    .calculator__inputs{display:flex;flex-direction:column;gap:24px}
-    .calc-field label{display:block;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--color-warm-gray);margin-bottom:8px}
-    .calc-field input[type=range]{width:100%;-webkit-appearance:none;height:2px;background:var(--color-sand);outline:none;border-radius:2px}
-    .calc-field input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--color-gold);cursor:pointer;border:3px solid var(--color-white);box-shadow:0 2px 8px rgba(0,0,0,.15)}
-    .calc-field .calc-value{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
-    .calc-field .calc-value span{font-family:var(--font-display);font-size:1.4rem;color:var(--color-dark)}
-    .calc-field .calc-value small{font-size:.72rem;color:var(--color-warm-gray)}
-    .calculator__result{background:var(--color-dark);padding:clamp(32px,4vw,50px);color:var(--color-white);position:sticky;top:100px}
-    .calculator__result h3{font-family:var(--font-display);font-size:1.5rem;margin-bottom:24px}
-    .calc-summary{display:flex;flex-direction:column;gap:16px}
-    .calc-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)}
-    .calc-row span:first-child{font-size:.78rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.1em}
-    .calc-row span:last-child{font-family:var(--font-display);font-size:1.1rem}
-    .calc-row.total{border-top:1px solid var(--color-gold);border-bottom:none;padding-top:20px;margin-top:8px}
-    .calc-row.total span:last-child{font-size:1.8rem;color:var(--color-gold)}
-
-    /* ═══════════════════════════════════════════
        LANGUAGE TOGGLE
     ═══════════════════════════════════════════ */
     .lang-toggle{display:flex;align-items:center;gap:4px;margin-left:16px}
@@ -1767,7 +1746,6 @@
 
       .masterplan__grid { grid-template-columns: 1fr; }
       .contact__grid { grid-template-columns: 1fr; }
-      .calculator__grid { grid-template-columns: 1fr; }
       .trust__grid { grid-template-columns: 1fr; }
       .architect__grid { grid-template-columns: 1fr; }
       .architect__visual { min-height: 360px; }
@@ -2436,49 +2414,6 @@
       </div>
     </section>
 
-    <!-- ═══════════════════ CALCULATOR ═══════════════════ -->
-    <section class="calculator" id="calculadora">
-      <div class="container">
-        <div class="reveal" style="text-align:center">
-          <div class="section-label" style="justify-content:center"><span data-es="Simulador" data-en="Simulator">Simulador</span></div>
-          <h2 class="heading-lg" data-es="Calcula Tu Inversión" data-en="Calculate Your Investment">Calcula Tu Inversión</h2>
-        </div>
-        <div class="calculator__grid">
-          <div class="calculator__inputs reveal">
-            <div class="calc-field">
-              <label data-es="Valor del Apartamento (USD)" data-en="Apartment Value (USD)">Valor del Apartamento (USD)</label>
-              <input type="range" id="calcPrice" min="80000" max="250000" value="120000" step="5000" oninput="updateCalc()">
-              <div class="calc-value"><span id="calcPriceVal">$120,000</span><small>USD</small></div>
-            </div>
-            <div class="calc-field">
-              <label data-es="Inicial (%)" data-en="Down Payment (%)">Inicial (%)</label>
-              <input type="range" id="calcDown" min="10" max="50" value="30" step="5" oninput="updateCalc()">
-              <div class="calc-value"><span id="calcDownVal">30%</span><small id="calcDownAmt">$36,000</small></div>
-            </div>
-            <div class="calc-field">
-              <label data-es="Plazo de Financiamiento (años)" data-en="Financing Term (years)">Plazo de Financiamiento (años)</label>
-              <input type="range" id="calcYears" min="5" max="25" value="15" step="1" oninput="updateCalc()">
-              <div class="calc-value"><span id="calcYearsVal">15 años</span><small>@ 9.5% APR</small></div>
-            </div>
-          </div>
-          <div class="calculator__result reveal reveal-delay-2">
-            <h3 data-es="Resumen de Inversión" data-en="Investment Summary">Resumen de Inversión</h3>
-            <div class="calc-summary">
-              <div class="calc-row"><span data-es="Precio" data-en="Price">Precio</span><span id="sumPrice">$120,000</span></div>
-              <div class="calc-row"><span data-es="Inicial" data-en="Down Payment">Inicial</span><span id="sumDown">$36,000</span></div>
-              <div class="calc-row"><span data-es="Financiamiento" data-en="Financing">Financiamiento</span><span id="sumFinance">$84,000</span></div>
-              <div class="calc-row"><span data-es="Plazo" data-en="Term">Plazo</span><span id="sumYears">15 años</span></div>
-              <div class="calc-row total"><span data-es="Cuota Mensual Est." data-en="Est. Monthly Payment">Cuota Mensual Est.</span><span id="sumMonthly">$877</span></div>
-            </div>
-            <a href="#contacto" class="btn btn--primary" style="width:100%;justify-content:center;margin-top:28px" data-es="Solicitar Cotización" data-en="Request Quote">
-              Solicitar Cotización
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ═══════════════════ BROCHURE CTA ═══════════════════ -->
     <section class="brochure">
       <div class="container">
@@ -2864,30 +2799,6 @@
     window.addEventListener('scroll', parallax, { passive: true });
 
     // ══════════════════════════════════════
-    // CALCULATOR
-    // ══════════════════════════════════════
-    function updateCalc() {
-      const price = +document.getElementById('calcPrice').value;
-      const downPct = +document.getElementById('calcDown').value;
-      const years = +document.getElementById('calcYears').value;
-      const downAmt = price * downPct / 100;
-      const finance = price - downAmt;
-      const rate = 0.095 / 12;
-      const n = years * 12;
-      const monthly = finance * (rate * Math.pow(1 + rate, n)) / (Math.pow(1 + rate, n) - 1);
-      const fmt = v => '$' + Math.round(v).toLocaleString('en-US');
-      document.getElementById('calcPriceVal').textContent = fmt(price);
-      document.getElementById('calcDownVal').textContent = downPct + '%';
-      document.getElementById('calcDownAmt').textContent = fmt(downAmt);
-      document.getElementById('calcYearsVal').textContent = years + (currentLang === 'en' ? ' years' : ' años');
-      document.getElementById('sumPrice').textContent = fmt(price);
-      document.getElementById('sumDown').textContent = fmt(downAmt);
-      document.getElementById('sumFinance').textContent = fmt(finance);
-      document.getElementById('sumYears').textContent = years + (currentLang === 'en' ? ' years' : ' años');
-      document.getElementById('sumMonthly').textContent = fmt(monthly);
-    }
-
-    // ══════════════════════════════════════
     // MULTI-LANGUAGE (full dictionary)
     // ══════════════════════════════════════
     let currentLang = 'es';
@@ -3082,7 +2993,6 @@
       });
 
       document.documentElement.lang = lang;
-      updateCalc();
     }
 
     // ══════════════════════════════════════
@@ -3109,8 +3019,6 @@
       });
     });
 
-    // ── Init calculator ──
-    updateCalc();
   </script>
 
 </body>
