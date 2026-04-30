@@ -1780,11 +1780,59 @@
     }
 
     @media (max-width: 768px) {
-      .hero__title { font-size: clamp(2.4rem, 8vw, 3.5rem); }
-      .hero__dots { bottom: 20px; right: 20px; }
-      .hero__price-badge { position: relative; right: auto; bottom: auto; margin-top: 24px; }
-      .hero__price-badge-inner { padding: 20px 24px; }
-      .hero__fiduciaria { bottom: 76px; right: 20px; }
+      /* Hero — cleaner mobile layout */
+      .hero {
+        height: auto;
+        min-height: 100vh;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-end;
+      }
+      .hero__content { padding: 100px 24px 24px; display: flex; flex-direction: column; flex: 1 1 auto; justify-content: flex-end; }
+      .hero__label { margin-bottom: 14px; gap: 10px; }
+      .hero__label::before { width: 22px; }
+      .hero__label span { font-size: .55rem; letter-spacing: .25em; white-space: nowrap; }
+      .hero__title { font-size: clamp(2.6rem, 11vw, 4rem); margin-bottom: 18px; }
+      .hero__title small { font-size: .26em; letter-spacing: .3em; margin-bottom: 6px; }
+      .hero__subtitle { font-size: .92rem; margin-bottom: 24px; max-width: 100%; }
+      .hero__dots { bottom: 12px; right: 14px; }
+      .hero__scroll-indicator { display: none; }
+
+      /* Price badge — compact horizontal card, inline below buttons */
+      .hero__price-badge {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin: 0 24px;
+        align-self: flex-start;
+        animation: fadeUp 1s 1.2s var(--ease-out-expo) forwards;
+      }
+      .hero__price-badge-inner {
+        flex-direction: row;
+        align-items: center;
+        gap: 18px;
+        padding: 16px 22px;
+      }
+      .hero__price-from { font-size: .52rem; letter-spacing: .22em; }
+      .hero__price-amount { font-size: 1.45rem; }
+      .hero__price-amount span { font-size: .78rem; }
+      .hero__price-divider { width: 1px; height: 44px; margin: 0; background: rgba(184,150,62,.4); }
+      .hero__price-reserve { font-size: .52rem; letter-spacing: .18em; text-align: left; }
+      .hero__price-reserve strong { font-size: 1.05rem; }
+
+      /* Fiduciaria — compact, inline */
+      .hero__fiduciaria {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin: 14px 24px 80px;
+        align-self: flex-start;
+        padding: 8px 14px;
+        gap: 10px;
+        animation: fadeUp 1s 1.4s var(--ease-out-expo) forwards;
+      }
+      .hero__fiduciaria span { font-size: .5rem; letter-spacing: .12em; }
+      .hero__fiduciaria img { height: 22px; }
 
       .intro__stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
       .intro__stat-number { font-size: 1.8rem; }
@@ -1816,9 +1864,17 @@
     }
 
     @media (max-width: 480px) {
-      .hero { min-height: 600px; }
-      .hero__actions { flex-direction: column; }
+      .hero__content { padding: 90px 20px 24px; }
+      .hero__title { font-size: clamp(2.4rem, 12vw, 3.4rem); }
+      .hero__actions { flex-direction: column; gap: 10px; }
       .hero__actions .btn { width: 100%; justify-content: center; }
+      .hero__price-badge { margin: 0 20px; }
+      .hero__fiduciaria { margin: 14px 20px 76px; }
+
+      /* Compact price badge on small screens */
+      .hero__price-badge-inner { padding: 14px 18px; gap: 14px; }
+      .hero__price-amount { font-size: 1.3rem; }
+      .hero__price-divider { height: 38px; }
 
       .intro__stats { grid-template-columns: 1fr; gap: 12px; }
 
@@ -2441,7 +2497,7 @@
 
     <!-- ═══════════════════ MAP ═══════════════════ -->
     <section class="map-section" id="ubicacion">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15136.2!2d-68.96!3d18.44!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ea7b3b3b3b3b3b3%3A0x1234567890abcdef!2sVilla%20Hermosa%2C%20La%20Romana%2C%20Dominican%20Republic!5e0!3m2!1ses!2sus!4v1" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación Brisas de Romana Green - Villa Hermosa, La Romana"></iframe>
+      <iframe src="https://www.google.com/maps?q=18.43576,-69.02257&hl=es&z=15&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación Brisas de Romana Green - Cumayasa, Villa Hermosa, La Romana"></iframe>
     </section>
 
     <!-- ═══════════════════ CONTACT ═══════════════════ -->
