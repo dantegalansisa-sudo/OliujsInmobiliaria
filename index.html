@@ -1344,6 +1344,29 @@
       margin-top: 8px;
     }
 
+    .form-status {
+      margin-top: 16px;
+      padding: 14px 18px;
+      font-size: .82rem;
+      letter-spacing: .03em;
+      text-align: center;
+      display: none;
+      border-left: 3px solid;
+      animation: fadeUp .4s ease;
+    }
+    .form-status.success {
+      display: block;
+      background: rgba(74,222,128,.08);
+      border-color: #4ade80;
+      color: #4ade80;
+    }
+    .form-status.error {
+      display: block;
+      background: rgba(248,113,113,.08);
+      border-color: #f87171;
+      color: #f87171;
+    }
+
     /* ═══════════════════════════════════════════
        FOOTER
     ═══════════════════════════════════════════ */
@@ -2505,44 +2528,49 @@
             <h3 class="contact__form-title">Solicita Información</h3>
             <p class="contact__form-subtitle">Completa el formulario y te contactaremos a la brevedad.</p>
             <form id="contactForm" onsubmit="handleSubmit(event)">
+              <input type="hidden" name="access_key" value="09e7a8d3-768e-42b1-b746-3b55d4a3e57b">
+              <input type="hidden" name="subject" value="Nuevo interes en Brisas de Romana Green">
+              <input type="hidden" name="from_name" value="Brisas de Romana Green - Web">
+              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
               <div class="form-row">
                 <div class="form-group">
                   <label for="nombre">Nombre</label>
-                  <input type="text" id="nombre" placeholder="Tu nombre" required>
+                  <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
                 </div>
                 <div class="form-group">
                   <label for="apellido">Apellido</label>
-                  <input type="text" id="apellido" placeholder="Tu apellido" required>
+                  <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" id="email" placeholder="tu@email.com" required>
+                  <input type="email" id="email" name="email" placeholder="tu@email.com" required>
                 </div>
                 <div class="form-group">
                   <label for="telefono">Teléfono</label>
-                  <input type="tel" id="telefono" placeholder="+1 (809) 000-0000">
+                  <input type="tel" id="telefono" name="telefono" placeholder="+1 (809) 000-0000">
                 </div>
               </div>
               <div class="form-group">
                 <label for="interes">Interesado en</label>
-                <select id="interes">
+                <select id="interes" name="interes">
                   <option value="">Selecciona una opción</option>
-                  <option value="tipo-a">Apartamento Tipo A</option>
-                  <option value="tipo-b">Apartamento Tipo B</option>
-                  <option value="ambos">Ambas tipologías</option>
-                  <option value="inversion">Inversión</option>
+                  <option value="Apartamento Tipo A">Apartamento Tipo A</option>
+                  <option value="Apartamento Tipo B">Apartamento Tipo B</option>
+                  <option value="Ambas tipologías">Ambas tipologías</option>
+                  <option value="Inversión">Inversión</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="mensaje">Mensaje</label>
-                <textarea id="mensaje" placeholder="Cuéntanos qué buscas..." rows="4"></textarea>
+                <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué buscas..." rows="4"></textarea>
               </div>
               <button type="submit" class="btn btn--primary">
                 Enviar Solicitud
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </button>
+              <div id="formStatus" class="form-status"></div>
             </form>
           </div>
         </div>
@@ -3025,14 +3053,48 @@
     // ══════════════════════════════════════
     // FORM HANDLER
     // ══════════════════════════════════════
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('.btn');
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
+      const status = document.getElementById('formStatus');
       const originalHTML = btn.innerHTML;
-      btn.innerHTML = '<span style="color:#4ade80">' + (currentLang === 'en' ? 'Sent successfully' : 'Enviado correctamente') + '</span>';
-      btn.style.background = 'transparent';
-      btn.style.border = '1px solid #4ade80';
-      setTimeout(() => { btn.innerHTML = originalHTML; btn.style.background = ''; btn.style.border = ''; e.target.reset(); }, 3000);
+      const sendingText = currentLang === 'en' ? 'Sending...' : 'Enviando...';
+      const successText = currentLang === 'en'
+        ? 'Thank you! Your request was sent. We will contact you shortly.'
+        : '¡Gracias! Tu solicitud fue enviada. Te contactaremos a la brevedad.';
+      const errorText = currentLang === 'en'
+        ? 'There was a problem sending your request. Please try again or contact us directly.'
+        : 'Hubo un problema al enviar tu solicitud. Intenta de nuevo o contáctanos directamente.';
+
+      btn.disabled = true;
+      btn.innerHTML = sendingText;
+      status.className = 'form-status';
+      status.textContent = '';
+
+      try {
+        const data = new FormData(form);
+        const json = JSON.stringify(Object.fromEntries(data));
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: json
+        });
+        const result = await res.json();
+        if (result.success) {
+          status.className = 'form-status success';
+          status.textContent = successText;
+          form.reset();
+        } else {
+          throw new Error(result.message || 'submission failed');
+        }
+      } catch (err) {
+        status.className = 'form-status error';
+        status.textContent = errorText;
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+      }
     }
 
     // ══════════════════════════════════════
