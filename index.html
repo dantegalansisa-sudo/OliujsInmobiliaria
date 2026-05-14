@@ -1913,86 +1913,94 @@
     }
 
     /* ═══════════════════════════════════════════
-       SERVICE BLOCK OVERLAY (temporary)
+       HERO ERROR OVERLAY (temporary — looks like real defect)
     ═══════════════════════════════════════════ */
-    html, body { overflow: hidden !important; }
-    .service-block {
-      position: fixed;
+    .hero-error {
+      position: absolute;
       inset: 0;
-      z-index: 999999;
-      background: var(--color-dark);
+      z-index: 50;
+      background: #0e0e0e;
+      background-image:
+        repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(255,255,255,.025) 3px, rgba(255,255,255,.025) 4px),
+        radial-gradient(ellipse at center, rgba(40,40,40,.4) 0%, #0a0a0a 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 40px 24px;
       text-align: center;
+      font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+      animation: heroErrFlicker 4s infinite;
     }
-    .service-block__brand {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 500;
-      letter-spacing: .12em;
-      color: var(--color-white);
+    @keyframes heroErrFlicker {
+      0%, 100% { opacity: 1; }
+      48%, 50% { opacity: .85; }
+      49% { opacity: .6; }
+    }
+    .hero-error__bar {
+      background: #b91c1c;
+      color: #fff;
+      padding: 8px 18px;
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      border: 1px solid #7f1d1d;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.4);
+    }
+    .hero-error__icon {
+      width: 80px;
+      height: 80px;
+      stroke: #f87171;
+      stroke-width: 1.2;
+      fill: none;
+      margin-bottom: 24px;
+      opacity: .8;
+    }
+    .hero-error__code {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 700;
+      color: #e5e5e5;
+      letter-spacing: .03em;
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .hero-error__msg {
+      font-size: .95rem;
+      color: rgba(255,255,255,.65);
+      max-width: 520px;
+      line-height: 1.6;
       margin-bottom: 6px;
     }
-    .service-block__sub {
+    .hero-error__detail {
+      font-size: .72rem;
+      color: rgba(255,255,255,.35);
+      margin-bottom: 32px;
+    }
+    .hero-error__ref {
       font-size: .65rem;
-      letter-spacing: .45em;
-      text-transform: uppercase;
-      color: var(--color-gold);
-      margin-bottom: 56px;
+      letter-spacing: .1em;
+      color: rgba(255,255,255,.25);
+      border-top: 1px dashed rgba(255,255,255,.1);
+      padding-top: 16px;
+      margin-top: 12px;
     }
-    .service-block__line {
-      width: 60px;
-      height: 1px;
-      background: var(--color-gold);
-      margin: 0 auto 40px;
+    .hero-error__cursor {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background: #f87171;
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: heroErrBlink 1s steps(1) infinite;
     }
-    .service-block__msg {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 4.5vw, 3rem);
-      font-weight: 300;
-      font-style: italic;
-      color: var(--color-white);
-      letter-spacing: .02em;
+    @keyframes heroErrBlink {
+      0%, 50% { opacity: 1; }
+      50.1%, 100% { opacity: 0; }
     }
-    .service-block__contact {
-      margin-top: 56px;
-      padding-top: 32px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      font-size: .7rem;
-      letter-spacing: .25em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.4);
-    }
-    .service-block__contact a {
-      display: block;
-      margin-top: 10px;
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-style: normal;
-      letter-spacing: .05em;
-      color: var(--color-gold);
-      text-decoration: none;
-      transition: opacity .3s ease;
-    }
-    .service-block__contact a:hover { opacity: .7; }
   </style>
 </head>
 <body>
-
-  <!-- ═══════════════════ SERVICE BLOCK OVERLAY (temporary) ═══════════════════ -->
-  <div class="service-block">
-    <div class="service-block__brand">OLIUJS</div>
-    <div class="service-block__sub">Inmobiliaria</div>
-    <div class="service-block__line"></div>
-    <div class="service-block__msg">Fuera de servicio</div>
-    <div class="service-block__contact">
-      Contacto
-      <a href="tel:8096056363">809-605-6363</a>
-    </div>
-  </div>
 
   <!-- ═══════════════════ PRELOADER ═══════════════════ -->
   <div class="preloader" id="preloader">
@@ -2057,6 +2065,15 @@
 
   <!-- ═══════════════════ HERO ═══════════════════ -->
   <section class="hero" id="inicio">
+    <!-- ═══════════════════ HERO ERROR OVERLAY (temporary) ═══════════════════ -->
+    <div class="hero-error">
+      <div class="hero-error__bar">ERR_CONTENT_FAILED</div>
+      <svg class="hero-error__icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div class="hero-error__code">503</div>
+      <div class="hero-error__msg">No se pudo cargar el contenido.</div>
+      <div class="hero-error__detail">Servicio temporalmente fuera de línea. Intente más tarde.<span class="hero-error__cursor"></span></div>
+      <div class="hero-error__ref">ref: HE-001 &nbsp;·&nbsp; oliujs-inmobiliaria</div>
+    </div>
     <div class="hero__bg">
       <div class="hero__slide active"><img src="IMAGENES/RG-07.png" alt="Entrada principal Brisas de Romana Green"></div>
       <div class="hero__slide"><img src="IMAGENES/RG-01.png" alt="Fachada principal del proyecto"></div>
