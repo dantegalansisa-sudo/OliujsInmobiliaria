@@ -1911,9 +1911,88 @@
       .amenities__icons { grid-template-columns: 1fr 1fr; }
       .amenity-icon { padding: 20px 8px; }
     }
+
+    /* ═══════════════════════════════════════════
+       SERVICE BLOCK OVERLAY (temporary)
+    ═══════════════════════════════════════════ */
+    html, body { overflow: hidden !important; }
+    .service-block {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      background: var(--color-dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .service-block__brand {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 500;
+      letter-spacing: .12em;
+      color: var(--color-white);
+      margin-bottom: 6px;
+    }
+    .service-block__sub {
+      font-size: .65rem;
+      letter-spacing: .45em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 56px;
+    }
+    .service-block__line {
+      width: 60px;
+      height: 1px;
+      background: var(--color-gold);
+      margin: 0 auto 40px;
+    }
+    .service-block__msg {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--color-white);
+      letter-spacing: .02em;
+    }
+    .service-block__contact {
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      font-size: .7rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.4);
+    }
+    .service-block__contact a {
+      display: block;
+      margin-top: 10px;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-style: normal;
+      letter-spacing: .05em;
+      color: var(--color-gold);
+      text-decoration: none;
+      transition: opacity .3s ease;
+    }
+    .service-block__contact a:hover { opacity: .7; }
   </style>
 </head>
 <body>
+
+  <!-- ═══════════════════ SERVICE BLOCK OVERLAY (temporary) ═══════════════════ -->
+  <div class="service-block">
+    <div class="service-block__brand">OLIUJS</div>
+    <div class="service-block__sub">Inmobiliaria</div>
+    <div class="service-block__line"></div>
+    <div class="service-block__msg">Fuera de servicio</div>
+    <div class="service-block__contact">
+      Contacto
+      <a href="tel:8096056363">809-605-6363</a>
+    </div>
+  </div>
 
   <!-- ═══════════════════ PRELOADER ═══════════════════ -->
   <div class="preloader" id="preloader">
