@@ -1607,17 +1607,6 @@
     @keyframes preloaderFill{to{width:100%}}
 
     /* ═══════════════════════════════════════════
-       CUSTOM CURSOR (desktop only)
-    ═══════════════════════════════════════════ */
-    .custom-cursor{display:none}
-    @media(hover:hover)and (pointer:fine){
-      .custom-cursor{display:block;position:fixed;width:20px;height:20px;border:1px solid var(--color-gold);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width .3s ease,height .3s ease,border-color .3s ease,background .3s ease}
-      .custom-cursor.hover{width:50px;height:50px;background:rgba(184,150,62,.08);border-color:var(--color-gold-light)}
-      body{cursor:none}
-      a,button,input,textarea,select,.gallery__item,.interiors__card,.residences__plan-card,.amenity-icon{cursor:none}
-    }
-
-    /* ═══════════════════════════════════════════
        HERO SLIDER
     ═══════════════════════════════════════════ */
     .hero__slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
@@ -2008,9 +1997,6 @@
     <div class="preloader__sub">Inmobiliaria</div>
     <div class="preloader__bar"><div class="preloader__bar-fill"></div></div>
   </div>
-
-  <!-- ═══════════════════ CUSTOM CURSOR ═══════════════════ -->
-  <div class="custom-cursor" id="cursor"></div>
 
   <!-- ═══════════════════ NAVBAR ═══════════════════ -->
   <nav class="navbar" id="navbar">
@@ -2789,21 +2775,6 @@
     window.addEventListener('load', () => {
       setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 2200);
     });
-
-    // ══════════════════════════════════════
-    // CUSTOM CURSOR
-    // ══════════════════════════════════════
-    const cursor = document.getElementById('cursor');
-    if (window.matchMedia('(hover:hover) and (pointer:fine)').matches && cursor) {
-      document.addEventListener('mousemove', e => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-      });
-      document.querySelectorAll('a,button,.gallery__item,.interiors__card,.residences__plan-card,.amenity-icon,.why-romana__card,.trust__value').forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-      });
-    }
 
     // ══════════════════════════════════════
     // NAVBAR SCROLL
